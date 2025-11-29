@@ -1,0 +1,16 @@
+'Cmd/Ctrl+Enter' // Triggers `Todo: Toggle Box`
+'Alt+Enter' // Triggers `Todo: Toggle Box`
+'Alt+D' // Triggers `Todo: Toggle Done`
+'Alt+C' // Triggers `Todo: Toggle Cancelled`
+'Alt+S' // Triggers `Todo: Toggle Start`
+'Cmd/Ctrl+Shift+A' // Triggers  `Todo: Archive`
+
+☐ Create Nx Workspace with Angular 20 From Nx Documentation (need an account Nx Cloud and Github)
+☐ Configure .cursor/mcp.json to use the MCP Angular
+☐ Configure .cursor rules
+☐ Prepare prompts to specialize the 4 agents
+☐ Configure 4 specialized agents
+☐ Use Agent 0 for planification and agents recommendations
+☐ Verify tags bounderies and automations with Nx (app -> project.json tags)
+☐ Verify depConstraints in eslint.config.mjs in root (using bounderies tags)
+☐ environments.ts and environments.prod.ts in apps/mini-crm/src/environments/
