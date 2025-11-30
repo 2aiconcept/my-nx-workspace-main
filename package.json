@@ -27,7 +27,12 @@
     "docs": "compodoc -p apps/mini-crm/tsconfig.app.json -s --port 8080",
     "docs:build": "compodoc -p apps/mini-crm/tsconfig.app.json -d docs/compodoc",
     "docs:coverage": "compodoc -p apps/mini-crm/tsconfig.app.json --coverageTest 80",
-    "docs:watch": "compodoc -p apps/mini-crm/tsconfig.app.json -s --watch"
+    "docs:watch": "compodoc -p apps/mini-crm/tsconfig.app.json -s --watch",
+    "lighthouse:app": "lhci autorun",
+    "lighthouse:docs": "lhci autorun --config=lighthouserc.docs.json",
+    "lighthouse:docs:build": "npm run docs:build && lhci autorun --config=lighthouserc.docs.json",
+    "audit:docs": "concurrently --kill-others --success first \"npm run docs\" \"wait-on http://localhost:8080 && npm run lighthouse:docs\"",
+    "audit:docs+app": "concurrently \"npm run docs\" \"npm run start\""
   },
   "private": true,
   "dependencies": {
@@ -53,6 +58,7 @@
     "@angular/language-service": "~20.1.0",
     "@compodoc/compodoc": "^1.1.32",
     "@eslint/js": "^9.8.0",
+    "@lhci/cli": "^0.15.1",
     "@nx/angular": "21.4.0",
     "@nx/eslint": "21.4.0",
     "@nx/eslint-plugin": "21.4.0",
@@ -83,6 +89,7 @@
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.29.0",
     "vite": "^6.0.0",
-    "vitest": "^3.0.0"
+    "vitest": "^3.0.0",
+    "wait-on": "^9.0.3"
   }
 }
