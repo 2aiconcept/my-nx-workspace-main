@@ -1,0 +1,11 @@
+<div class="order-add-container">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="h4 mb-0">Ajouter une commande</h2>
+    </div>
+    <div class="card-body">
+      <lib-order-form [order]="null" (save)="onSave($event)" (canceled)="onCancel()" />
+    </div>
+  </div>
+</div>
+

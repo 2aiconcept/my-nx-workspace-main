@@ -1,0 +1,154 @@
+// ============================================
+// 1. VARIABLES CSS CUSTOM DU COMPONENT
+// ============================================
+// IMPORTANT : Bootstrap est déjà chargé globalement dans project.json
+// Utiliser directement les variables CSS Bootstrap (var(--bs-primary), etc.)
+:host {
+  // Variables de layout
+  --order-list-padding: 1.5rem;
+  --order-list-gap: 1rem;
+  --order-list-header-gap: 1rem;
+
+  // Variables de couleurs (utilisent les variables CSS Bootstrap globales)
+  --order-list-bg: var(--bs-white);
+  --order-list-text: var(--bs-body-color);
+  --order-list-border: var(--bs-border-color);
+  --order-list-header-bg: transparent;
+
+  // Variables de taille
+  --order-list-table-radius: var(--bs-border-radius);
+  --order-list-button-gap: 0.5rem;
+
+  // Host display
+  display: block;
+}
+
+// ============================================
+// 2. STYLES DU COMPONENT (utilisent les variables CSS)
+// ============================================
+.order-list-container {
+  padding: var(--order-list-padding);
+  background-color: var(--order-list-bg);
+  color: var(--order-list-text);
+}
+
+// Header section
+.order-list-container > .d-flex {
+  gap: var(--order-list-header-gap);
+  margin-bottom: var(--order-list-gap);
+}
+
+// Table responsive wrapper
+.table-responsive {
+  border-radius: var(--order-list-table-radius);
+  overflow: hidden;
+  border: 1px solid var(--order-list-border);
+}
+
+// Table styles
+.table {
+  margin-bottom: 0;
+
+  thead {
+    background-color: var(--bs-light);
+  }
+
+  th {
+    font-weight: 600;
+    border-bottom: 2px solid var(--order-list-border);
+  }
+
+  tbody {
+    tr {
+      transition: background-color 0.15s ease-in-out;
+
+      &:hover {
+        background-color: var(--bs-light);
+      }
+    }
+  }
+
+  // Action buttons group
+  .btn-group {
+    gap: var(--order-list-button-gap);
+
+    .btn {
+      min-width: 2.5rem;
+    }
+  }
+}
+
+// Empty state
+.text-muted {
+  color: var(--bs-secondary) !important;
+}
+
+// ============================================
+// 3. ÉTATS ET VARIANTES
+// ============================================
+// Loading state
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+// Error alert
+.alert {
+  border-radius: var(--bs-border-radius);
+}
+
+// ============================================
+// 4. RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  :host {
+    --order-list-padding: 1rem;
+    --order-list-header-gap: 0.75rem;
+  }
+
+  .order-list-container {
+    > .d-flex {
+      flex-direction: column;
+      align-items: stretch !important;
+
+      h1 {
+        text-align: center;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  // Hide some columns on mobile
+  .table {
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3) {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  :host {
+    --order-list-padding: 0.75rem;
+  }
+
+  // Further simplify on very small screens
+  .table {
+    font-size: 0.875rem;
+
+    .btn-group {
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
+

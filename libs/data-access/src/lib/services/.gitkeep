@@ -1,0 +1,22 @@
+# Services Directory
+
+Ce dossier contiendra les services HTTP qui utiliseront le token API_CONFIG.
+
+## Exemple d'utilisation
+
+```typescript
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { API_CONFIG } from '../config/api.config';
+
+@Injectable({ providedIn: 'root' })
+export class OrdersService {
+  private http = inject(HttpClient);
+  private config = inject(API_CONFIG);
+
+  getOrders() {
+    return this.http.get(`${this.config.apiUrl}/orders`);
+  }
+}
+```
+

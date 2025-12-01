@@ -42,7 +42,13 @@
             }
           ],
           "outputHashing": "all",
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/mini-crm/src/environments/environment.ts",
+              "with": "apps/mini-crm/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,

@@ -1,0 +1,94 @@
+<div class="order-list-container">
+  <!-- Header with Add Button -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Liste des commandes</h1>
+    <a routerLink="/orders/add" class="btn btn-primary">
+      <i class="bi bi-plus-lg" aria-hidden="true"></i>
+      Ajouter
+    </a>
+  </div>
+
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (error() && !loading()) {
+    <div class="alert alert-danger" role="alert">
+      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+      {{ error() }}
+    </div>
+  }
+
+  <!-- Orders Table -->
+  @if (!loading() && !error()) {
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Client</th>
+            <th scope="col" class="text-end">Nb jours</th>
+            <th scope="col" class="text-end">TJM</th>
+            <th scope="col" class="text-end">Total HT</th>
+            <th scope="col" class="text-end">Total TTC</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (order of orders(); track order.id) {
+            <tr>
+              <td>{{ order.customer }}</td>
+              <td class="text-end">{{ order.nbDays }}</td>
+              <td class="text-end">{{ formatCurrency(order.tjm) }}</td>
+              <td class="text-end">{{ formatCurrency(order.totalHt) }}</td>
+              <td class="text-end fw-bold">{{ formatCurrency(order.totalTtc) }}</td>
+              <td class="text-center">
+                <div class="btn-group" role="group" aria-label="Actions pour la commande">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="onEdit(order.id)"
+                    [attr.aria-label]="'Éditer la commande ' + order.customer"
+                  >
+                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                    <span class="visually-hidden">Éditer</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="onDeleteClick(order.id)"
+                    [attr.aria-label]="'Supprimer la commande ' + order.customer"
+                  >
+                    <i class="bi bi-trash" aria-hidden="true"></i>
+                    <span class="visually-hidden">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="text-center py-5 text-muted">
+                <i class="bi bi-inbox" aria-hidden="true"></i>
+                <p class="mb-0 mt-2">Aucune commande disponible</p>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  <!-- Confirm Delete Modal -->
+  <lib-confirm-modal
+    [modalId]="'deleteOrderModal'"
+    [title]="'Supprimer la commande'"
+    [message]="'Êtes-vous sûr de vouloir supprimer cette commande ? Cette action est irréversible.'"
+    (confirm)="onConfirmDelete()"
+  />
+</div>
+

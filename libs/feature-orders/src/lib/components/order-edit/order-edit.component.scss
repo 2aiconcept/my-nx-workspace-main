@@ -1,0 +1,107 @@
+// ============================================
+// 1. VARIABLES CSS CUSTOM DU COMPONENT
+// ============================================
+// IMPORTANT : Bootstrap est déjà chargé globalement dans project.json
+// Utiliser directement les variables CSS Bootstrap (var(--bs-primary), etc.)
+:host {
+  // Variables de layout
+  --order-edit-padding: 1.5rem;
+  --order-edit-max-width: 800px;
+  --order-edit-gap: 1rem;
+
+  // Variables de couleurs (utilisent les variables CSS Bootstrap globales)
+  --order-edit-bg: var(--bs-white);
+  --order-edit-text: var(--bs-body-color);
+  --order-edit-border: var(--bs-border-color);
+
+  // Variables de taille
+  --order-edit-radius: var(--bs-border-radius-lg);
+
+  // Host display
+  display: block;
+}
+
+// ============================================
+// 2. STYLES DU COMPONENT (utilisent les variables CSS)
+// ============================================
+.order-edit-container {
+  padding: var(--order-edit-padding);
+  max-width: var(--order-edit-max-width);
+  margin: 0 auto;
+  background-color: var(--order-edit-bg);
+  color: var(--order-edit-text);
+}
+
+// Loading spinner
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+// Error alert
+.alert {
+  border-radius: var(--bs-border-radius);
+}
+
+// Card styles
+.card {
+  border-radius: var(--order-edit-radius);
+  border: 1px solid var(--order-edit-border);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+  .card-header {
+    background-color: var(--bs-light);
+    border-bottom: 1px solid var(--order-edit-border);
+    padding: var(--order-edit-gap);
+  }
+
+  .card-body {
+    padding: var(--order-edit-padding);
+  }
+}
+
+// ============================================
+// 3. ÉTATS ET VARIANTES
+// ============================================
+// (Aucun état spécifique pour ce composant)
+
+// ============================================
+// 4. RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  :host {
+    --order-edit-padding: 1rem;
+    --order-edit-max-width: 100%;
+  }
+
+  .order-edit-container {
+    padding: 0.75rem;
+  }
+
+  .card {
+    .card-header,
+    .card-body {
+      padding: 1rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  :host {
+    --order-edit-padding: 0.75rem;
+  }
+
+  .order-edit-container {
+    padding: 0.5rem;
+  }
+
+  .card {
+    border-radius: var(--bs-border-radius);
+
+    .card-header,
+    .card-body {
+      padding: 0.75rem;
+    }
+  }
+}
+

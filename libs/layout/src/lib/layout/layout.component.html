@@ -1,0 +1,22 @@
+<div class="layout-container">
+  @if (isAuthenticated()) {
+    <header class="layout-header sticky-top">
+      <ng-content select="[layout-header]" />
+    </header>
+
+    <div class="layout-body">
+      <aside class="layout-sidebar">
+        <ng-content select="[layout-sidebar]" />
+      </aside>
+
+      <main class="layout-main">
+        <router-outlet />
+      </main>
+    </div>
+  } @else {
+    <main class="layout-main layout-main--centered">
+      <router-outlet />
+    </main>
+  }
+</div>
+

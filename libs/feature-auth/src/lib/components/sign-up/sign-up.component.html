@@ -1,0 +1,110 @@
+<div class="sign-up-container">
+  <div class="sign-up-card">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Inscription</h2>
+
+        @if (error()) {
+          <div class="alert alert-danger" role="alert">
+            {{ error() }}
+          </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              [class.is-invalid]="isFieldInvalid('email')"
+              formControlName="email"
+              placeholder="votre@email.com"
+              aria-describedby="email-error"
+            />
+            @if (isFieldInvalid('email')) {
+              <div id="email-error" class="invalid-feedback">
+                {{ getFieldError('email') }}
+              </div>
+            }
+          </div>
+
+          <!-- Password Field -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              [class.is-invalid]="isFieldInvalid('password')"
+              formControlName="password"
+              placeholder="••••••••"
+              aria-describedby="password-error"
+            />
+            @if (isFieldInvalid('password')) {
+              <div id="password-error" class="invalid-feedback">
+                {{ getFieldError('password') }}
+              </div>
+            }
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label"
+              >Confirmer le mot de passe</label
+            >
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-control"
+              [class.is-invalid]="isFieldInvalid('confirmPassword') || hasPasswordMismatch()"
+              formControlName="confirmPassword"
+              placeholder="••••••••"
+              aria-describedby="confirmPassword-error"
+            />
+            @if (isFieldInvalid('confirmPassword')) {
+              <div id="confirmPassword-error" class="invalid-feedback">
+                {{ getFieldError('confirmPassword') }}
+              </div>
+            }
+            @if (hasPasswordMismatch()) {
+              <div id="confirmPassword-error" class="invalid-feedback">
+                Les mots de passe ne correspondent pas
+              </div>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid mb-3">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="loading()"
+            >
+              @if (loading()) {
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Inscription...
+              } @else {
+                S'inscrire
+              }
+            </button>
+          </div>
+        </form>
+
+        <!-- Sign In Link -->
+        <div class="text-center">
+          <p class="mb-0">
+            Déjà un compte ?
+            <a routerLink="/auth/sign-in" class="sign-up-link">Se connecter</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

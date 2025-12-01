@@ -1,0 +1,76 @@
+// ============================================
+// 1. VARIABLES CSS CUSTOM DU COMPONENT
+// ============================================
+:host {
+  // Variables de couleurs (utilisent les variables CSS Bootstrap globales)
+  --header-bg: var(--bs-dark);
+  --header-text: var(--bs-white);
+  --header-brand-hover: var(--bs-secondary);
+
+  // Variables de layout
+  --header-height: 60px;
+  --header-padding-x: 1.5rem;
+  --header-gap: 0.75rem;
+
+  // Host display
+  display: block;
+}
+
+// ============================================
+// 2. STYLES DU COMPONENT (utilisent les variables CSS)
+// ============================================
+.header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--header-padding-x);
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--header-gap);
+  color: var(--header-text);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: var(--header-brand-hover);
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 2px solid var(--header-text);
+    outline-offset: 2px;
+  }
+}
+
+.header-title {
+  margin: 0;
+}
+
+// ============================================
+// 3. RESPONSIVE (si nécessaire)
+// ============================================
+@media (max-width: 768px) {
+  :host {
+    --header-padding-x: 1rem;
+    --header-gap: 0.5rem;
+  }
+
+  .header-brand {
+    font-size: 1.1rem;
+  }
+}
+

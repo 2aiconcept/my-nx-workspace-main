@@ -1,0 +1,49 @@
+// ============================================
+// 1. VARIABLES CSS CUSTOM DU COMPONENT
+// ============================================
+:host {
+  // Variables de layout
+  --form-padding: 0;
+  --form-gap: 1rem;
+  --totals-card-bg: var(--bs-light);
+  --totals-card-border: var(--bs-border-color);
+
+  // Host display
+  display: block;
+}
+
+// ============================================
+// 2. STYLES DU COMPONENT (utilisent les variables CSS)
+// ============================================
+form {
+  padding: var(--form-padding);
+}
+
+.card {
+  background-color: var(--totals-card-bg);
+  border-color: var(--totals-card-border);
+}
+
+.card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--bs-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.form-control-plaintext {
+  font-size: 1.125rem;
+  color: var(--bs-dark);
+}
+
+// ============================================
+// 3. RESPONSIVE (si nécessaire)
+// ============================================
+@media (max-width: 768px) {
+  .row {
+    --bs-gutter-x: 0.5rem;
+  }
+}
+

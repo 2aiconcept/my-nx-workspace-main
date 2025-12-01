@@ -1,0 +1,114 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <!-- Customer Field -->
+  <div class="mb-3">
+    <label for="customer" class="form-label">Client</label>
+    <input
+      type="text"
+      id="customer"
+      class="form-control"
+      [class.is-invalid]="isFieldInvalid('customer')"
+      formControlName="customer"
+      placeholder="Nom du client ou entreprise"
+      aria-describedby="customer-error"
+    />
+    @if (isFieldInvalid('customer')) {
+      <div id="customer-error" class="invalid-feedback">
+        {{ getFieldError('customer') }}
+      </div>
+    }
+  </div>
+
+  <!-- Number of Days Field -->
+  <div class="mb-3">
+    <label for="nbDays" class="form-label">Nombre de jours</label>
+    <input
+      type="number"
+      id="nbDays"
+      class="form-control"
+      [class.is-invalid]="isFieldInvalid('nbDays')"
+      formControlName="nbDays"
+      min="1"
+      aria-describedby="nbDays-error"
+    />
+    @if (isFieldInvalid('nbDays')) {
+      <div id="nbDays-error" class="invalid-feedback">
+        {{ getFieldError('nbDays') }}
+      </div>
+    }
+  </div>
+
+  <!-- Daily Rate (TJM) Field -->
+  <div class="mb-3">
+    <label for="tjm" class="form-label">TJM (Taux Journalier Moyen) en €</label>
+    <input
+      type="number"
+      id="tjm"
+      class="form-control"
+      [class.is-invalid]="isFieldInvalid('tjm')"
+      formControlName="tjm"
+      min="0"
+      step="0.01"
+      aria-describedby="tjm-error"
+    />
+    @if (isFieldInvalid('tjm')) {
+      <div id="tjm-error" class="invalid-feedback">
+        {{ getFieldError('tjm') }}
+      </div>
+    }
+  </div>
+
+  <!-- VAT Rate Field -->
+  <div class="mb-3">
+    <label for="tauxTva" class="form-label">Taux de TVA (%)</label>
+    <input
+      type="number"
+      id="tauxTva"
+      class="form-control"
+      [class.is-invalid]="isFieldInvalid('tauxTva')"
+      formControlName="tauxTva"
+      min="0"
+      max="100"
+      step="0.1"
+      aria-describedby="tauxTva-error"
+    />
+    @if (isFieldInvalid('tauxTva')) {
+      <div id="tauxTva-error" class="invalid-feedback">
+        {{ getFieldError('tauxTva') }}
+      </div>
+    }
+  </div>
+
+  <!-- Calculated Totals (Read-only) -->
+  <div class="mb-3">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title mb-3">Totaux calculés</h6>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-label text-muted">Total HT</div>
+            <div class="form-control-plaintext fw-bold">
+              {{ totalHt() | number : '1.2-2' }} €
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-label text-muted">Total TTC</div>
+            <div class="form-control-plaintext fw-bold">
+              {{ totalTtc() | number : '1.2-2' }} €
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Actions -->
+  <div class="d-flex gap-2 justify-content-end">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary">
+      {{ order() ? 'Modifier' : 'Créer' }}
+    </button>
+  </div>
+</form>
+

@@ -1,0 +1,28 @@
+<div class="order-edit-container">
+  @if (loading()) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+  }
+
+  @if (error() && !loading()) {
+    <div class="alert alert-danger" role="alert">
+      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+      {{ error() }}
+    </div>
+  }
+
+  @if (order() && !loading()) {
+    <div class="card">
+      <div class="card-header">
+        <h2 class="h4 mb-0">Modifier la commande</h2>
+      </div>
+      <div class="card-body">
+        <lib-order-form [order]="order()!" (save)="onSave($event)" (canceled)="onCancel()" />
+      </div>
+    </div>
+  }
+</div>
+

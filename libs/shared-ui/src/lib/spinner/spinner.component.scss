@@ -1,0 +1,33 @@
+// ============================================
+// 1. VARIABLES CSS CUSTOM DU COMPONENT
+// ============================================
+:host {
+  // Variables de layout
+  --spinner-container-display: flex;
+  --spinner-container-justify: center;
+  --spinner-container-align: center;
+  --spinner-container-min-height: 200px;
+
+  // Host display
+  display: block;
+}
+
+// ============================================
+// 2. STYLES DU COMPONENT (utilisent les variables CSS)
+// ============================================
+.spinner-container {
+  display: var(--spinner-container-display);
+  justify-content: var(--spinner-container-justify);
+  align-items: var(--spinner-container-align);
+  min-height: var(--spinner-container-min-height);
+}
+
+// ============================================
+// 3. RESPONSIVE (si nécessaire)
+// ============================================
+@media (max-width: 768px) {
+  :host {
+    --spinner-container-min-height: 150px;
+  }
+}
+

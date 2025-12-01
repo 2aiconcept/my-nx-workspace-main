@@ -1,0 +1,84 @@
+<div class="sign-in-container">
+  <div class="sign-in-card">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Connexion</h2>
+
+        @if (error()) {
+          <div class="alert alert-danger" role="alert">
+            {{ error() }}
+          </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              [class.is-invalid]="isFieldInvalid('email')"
+              formControlName="email"
+              placeholder="votre@email.com"
+              aria-describedby="email-error"
+            />
+            @if (isFieldInvalid('email')) {
+              <div id="email-error" class="invalid-feedback">
+                {{ getFieldError('email') }}
+              </div>
+            }
+          </div>
+
+          <!-- Password Field -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              [class.is-invalid]="isFieldInvalid('password')"
+              formControlName="password"
+              placeholder="••••••••"
+              aria-describedby="password-error"
+            />
+            @if (isFieldInvalid('password')) {
+              <div id="password-error" class="invalid-feedback">
+                {{ getFieldError('password') }}
+              </div>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid mb-3">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="loading()"
+            >
+              @if (loading()) {
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Connexion...
+              } @else {
+                Se connecter
+              }
+            </button>
+          </div>
+        </form>
+
+        <!-- Sign Up Link -->
+        <div class="text-center">
+          <p class="mb-0">
+            Pas encore de compte ?
+            <a routerLink="/auth/sign-up" class="sign-in-link">S'inscrire</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
