@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { OrdersFacade } from '@mini-crm/data-access';
 import { ConfirmModalComponent } from '@mini-crm/shared-ui';
@@ -156,4 +162,3 @@ export class OrderListComponent implements OnInit {
     }).format(amount);
   }
 }
-
