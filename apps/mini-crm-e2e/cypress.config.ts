@@ -12,9 +12,8 @@ export default defineConfig({
       },
       ciWebServerCommand: 'nx run mini-crm:serve-static',
     }),
-    baseUrl: 'http://localhost:4200',
+    baseUrl: 'http://localhost:4201',
     specPattern: 'src/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'src/support/e2e.ts',
   },
 });
-

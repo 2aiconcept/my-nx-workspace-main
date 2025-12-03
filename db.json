@@ -54,6 +54,46 @@
       "email": "test-1764775766167@example.com",
       "password": "$2a$10$HSIUP2q1iKkAKRA80A7O1OLtiYkCIhbKp7172X998ySkNmkvbxoOq",
       "id": 11
+    },
+    {
+      "email": "signin-1764775816294@example.com",
+      "password": "$2a$10$QGlR4WS/fxr/WQQkdIOP1.scww5rqAm92aakgC7XDGa5.Sm0AkkDO",
+      "id": 12
+    },
+    {
+      "email": "test-1764775820862@example.com",
+      "password": "$2a$10$kziGUism4cicDPipv6UhqemfEoy/ilddcDZ7yAr8Mp9H7v6fRXvGG",
+      "id": 13
+    },
+    {
+      "email": "signin-1764775839733@example.com",
+      "password": "$2a$10$jG57t1QQMLnGRWoJ8WLyFOOMXg1sVxALmAlJZXrT0cI/Kj3xG7CtS",
+      "id": 14
+    },
+    {
+      "email": "test-1764775843904@example.com",
+      "password": "$2a$10$PeNB.ZHYCu2stMLgNBnKhe5cWMcei3rBAXk5mNPEzr7KRvQEjM0hW",
+      "id": 15
+    },
+    {
+      "email": "signin-1764775931563@example.com",
+      "password": "$2a$10$AiH1aDUsEojgM/p.8eFybeeCmKbV8ub855ww4pwp4Dy2Ko9o5zMiG",
+      "id": 16
+    },
+    {
+      "email": "test-1764775935830@example.com",
+      "password": "$2a$10$BA8kicICj5XtU9Ic0uUO1ed/orq9a0SsiaK9PJUfVKOa3oEKRKiMy",
+      "id": 17
+    },
+    {
+      "email": "signin-1764776348644@example.com",
+      "password": "$2a$10$y3WlvqTfZPbsSINm2w6beO2/wHSj5Q3R5Fr/6VTDoPvEzHjmH/hLG",
+      "id": 18
+    },
+    {
+      "email": "test-1764776353299@example.com",
+      "password": "$2a$10$x5j90zHecRcWDKjJxR0ujuxLYarONyP1rzH/e7B.NH6Hrd7ZZ9LdK",
+      "id": 19
     }
   ],
   "orders": [
@@ -92,6 +132,15 @@
       "totalHt": 1500,
       "totalTtc": 1800,
       "id": 5
+    },
+    {
+      "customer": "PLB Consultant",
+      "nbDays": 4,
+      "tjm": 300,
+      "tauxTva": 20,
+      "totalHt": 1200,
+      "totalTtc": 1440,
+      "id": 6
     }
   ]
 }
